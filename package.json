@@ -1,0 +1,21 @@
+{
+  "name": "ad_site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Проект 'Сайт объявлений' на js",
+  "devDependencies": {
+    "browser-sync": "2.27.10",
+    "eslint": "8.21.0",
+    "eslint-config-htmlacademy": "6.0.0"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "scripts": {
+    "start": "browser-sync start --server --files \"js/**/*.js\"",
+    "test": "eslint js/"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  }
+}
