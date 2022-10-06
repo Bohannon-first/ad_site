@@ -38,3 +38,9 @@
   margin-top: 30px;
 }
 
+/* Активный элемент сортировки объявлений */
+.sorting__order-tab--active {
+  color: var(--white);
+  background-color: var(--main-blue);
+  border-color: var(--main-blue);
+}

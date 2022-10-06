@@ -40,7 +40,7 @@
   display: block;
   width: 100%;
   padding: 8px 18px;
-  color: var(--main-blue);
+  /* color: var(--main-blue); */
   border: 2px solid #e1e3ec;
   transition: var(--animation);
   cursor: pointer;
@@ -58,18 +58,18 @@
   border-radius: 0 4px 4px 0;
 }
 
-.sorting__order-tab input:focus + label {
+.sorting__order-tab input:focus+label {
   outline: none;
   background-color: var(--main-blue);
   border-color: var(--main-blue);
   color: var(--white);
 }
 
-.sorting__order-tab input:checked + label {
+/* .sorting__order-tab input:checked+label {
   color: var(--white);
   background-color: var(--main-blue);
   border-color: var(--main-blue);
-}
+} */
 
 .sorting__order-tab label:hover {
   color: var(--white);
@@ -84,20 +84,20 @@
   border-color: var(--dark-blue);
 }
 
-.sorting__order-tab input:disabled + label {
+.sorting__order-tab input:disabled+label {
   color: var(--disabled-blue);
   background-color: var(--white);
   cursor: default;
 }
 
-.sorting__order-tab input:disabled + label:hover,
-.sorting__order-tab input:disabled + label:active {
+.sorting__order-tab input:disabled+label:hover,
+.sorting__order-tab input:disabled+label:active {
   border-color: var(--disabled-bg);
 }
 
-.sorting__order-tab input:checked:disabled + label,
-.sorting__order-tab input:checked:disabled + label:hover,
-.sorting__order-tab input:checked:disabled + label:active {
+.sorting__order-tab input:checked:disabled+label,
+.sorting__order-tab input:checked:disabled+label:hover,
+.sorting__order-tab input:checked:disabled+label:active {
   background-color: var(--disabled-bg);
   border-color: var(--disabled-bg);
 }
@@ -153,23 +153,23 @@
   fill: #ffffff;
 }
 
-.sorting__favourites input:checked + label {
+.sorting__favourites input:checked+label {
   color: var(--white);
   background-color: var(--main-blue);
   border-color: var(--main-blue);
 }
 
-.sorting__favourites input:checked + label svg {
+.sorting__favourites input:checked+label svg {
   fill: var(--white);
 }
 
-.sorting__favourites input:disabled + label {
+.sorting__favourites input:disabled+label {
   color: var(--white);
   background-color: var(--disabled-blue);
   border-color: var(--disabled-blue);
   cursor: default;
 }
 
-.sorting__favourites input:disabled + label svg {
+.sorting__favourites input:disabled+label svg {
   fill: var(--white);
 }
