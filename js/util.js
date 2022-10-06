@@ -22,4 +22,53 @@ const showAlert = () => {
   }, ALERT_SHOW_TIME);
 };
 
-export {showAlert};
+// Функция перевода из таймстамп с сервера даты публикации объявления
+const getDataPublicationAd = (timestamp) => {
+  const datePublish = new Date(+timestamp);
+  const yearPublish = datePublish.getFullYear();
+  let monthPublish = datePublish.getMonth();
+  const dayPublish = datePublish.getDate();
+  switch (monthPublish) {
+    case 0:
+      monthPublish = 'января';
+      break;
+    case 1:
+      monthPublish = 'февраля';
+      break;
+    case 2:
+      monthPublish = 'марта';
+      break;
+    case 3:
+      monthPublish = 'апреля';
+      break;
+    case 4:
+      monthPublish = 'мая';
+      break;
+    case 5:
+      monthPublish = 'июня';
+      break;
+    case 6:
+      monthPublish = 'июля';
+      break;
+    case 7:
+      monthPublish = 'августа';
+      break;
+    case 8:
+      monthPublish = 'сентября';
+      break;
+    case 9:
+      monthPublish = 'октября';
+      break;
+    case 10:
+      monthPublish = 'ноября';
+      break;
+    case 11:
+      monthPublish = 'декабря';
+      break;
+  }
+  const fullDatePublishAd = `${dayPublish} ${ monthPublish} ${ yearPublish} года`;
+  return fullDatePublishAd;
+};
+
+
+export {showAlert, getDataPublicationAd};

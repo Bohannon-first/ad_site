@@ -1,21 +1,13 @@
 import './server.js';
 import './util.js';
 import './available-ads.js';
+import './sorting.js';
 import {getData} from './server.js';
 import {getAvailableAds} from './available-ads.js';
 
-// const items = document.querySelectorAll('.filter__radiobuttons-item');
-// console.log(items);
-// items.forEach((item) => {
-//   item.addEventListener(('click'), (evt) => {
-//     evt.preventDefault();
-//     console.log('Клик');
-//   })
-// });
-
 getData(getAvailableAds);
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, no-undef
 const mySlider = new rSlider({
   target: '#sampleSlider',
   values: [10000, 1000000],
