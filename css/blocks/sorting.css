@@ -107,6 +107,11 @@
   border-color: var(--disabled-bg);
 } */
 
+.sorting__favourites {
+  border: none;
+  padding: 0;
+}
+
 .sorting__favourites label {
   display: flex;
   align-items: center;

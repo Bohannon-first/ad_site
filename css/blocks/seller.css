@@ -54,6 +54,10 @@
   background-color: var(--light-green);
 }
 
+.seller--average .seller__rating span {
+  background-color: var(--dark-yellow);
+}
+
 .seller--bad .seller__rating span {
   background-color: var(--bad-rating);
 }
@@ -69,6 +73,19 @@
   height: 34px;
 
   background-image: url("./../../img/hand-green.svg");
+}
+
+.seller--average .seller__rating::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  right: 2px;
+
+  width: 26px;
+  height: 34px;
+
+  background-image: url("./../../img/hand-yellow.svg");
 }
 
 .seller--bad .seller__rating::after {

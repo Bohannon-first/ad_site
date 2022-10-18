@@ -4,6 +4,7 @@
   margin-bottom: 20px;
   color: var(--disabled-blue);
   text-align: center;
+  /* position: absolute; */
 }
 
 .favourites__empty-message {
@@ -19,8 +20,36 @@
 
 .favourites {
   display: flex;
-  padding-top: 30px;
+  /* padding-top: 30px; */
 
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
+}
+
+.favourites__list {
+  /* padding: 0;
+  margin: 0;
+  position: absolute;
+  flex-grow: 1;
+  overflow-y: auto; */
+
+
+  /* position: absolute; */
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  /* Скрыть вертикальный скроллбар в списке с избранными объявлениями */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Скрыть вертикальный скроллбар в списке с избранными объявлениями */
+.favourites__list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }

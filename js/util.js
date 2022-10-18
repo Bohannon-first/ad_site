@@ -1,3 +1,5 @@
+import {popupFullAd} from './popup-full-ad.js';
+
 const ALERT_SHOW_TIME = 3000;
 
 // Блок с возможной ошибкой запроса данных с сервера
@@ -70,5 +72,8 @@ const getDataPublicationAd = (timestamp) => {
   return fullDatePublishAd;
 };
 
+// Проверка на нажатую кнопку Esc и клик по оверлею
+const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+const isOverlayClick = (evt) => evt.target === popupFullAd;
 
-export {showAlert, getDataPublicationAd};
+export {showAlert, getDataPublicationAd, isEscEvent, isOverlayClick};

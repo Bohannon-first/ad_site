@@ -1,4 +1,5 @@
 import {showAlert} from './util.js';
+import {openPopupFullAdd} from './popup-full-ad.js';
 
 const getData = (onSuccess) => {
 
@@ -11,7 +12,7 @@ const getData = (onSuccess) => {
     })
     .then((jsonAds) => {
       onSuccess(jsonAds);
-      // console.log(jsonAds);
+      openPopupFullAdd(jsonAds.products);
     })
     .catch((err) => showAlert(err));
 };
