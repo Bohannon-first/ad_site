@@ -35,7 +35,8 @@
 }
 
 .results__info {
-  margin-top: 30px;
+  /* margin-top: 30px; */
+  position: relative;
 }
 
 /* Активный элемент сортировки объявлений */

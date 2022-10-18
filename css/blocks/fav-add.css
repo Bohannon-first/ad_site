@@ -17,6 +17,10 @@
   height: 100%;
 }
 
+.fav-add--active svg {
+  fill: var(--favorite-ad)
+}
+
 .fav-add:hover {
   width: 26px;
   height: 26px;
@@ -25,29 +29,28 @@
 }
 
 
-.fav-add svg{
-
+.fav-add svg {
   display: block;
   transition: var(--animation);
 }
 
 .fav-add:hover svg {
-  fill: var(--light-blue);
+  fill: var(--favorite-ad);
   width: 26px;
   height: 24px;
 }
 
- .fav-add:focus svg {
-  fill: var(--light-blue);
+.fav-add:focus svg {
+  /* fill: var(--light-blue); */
 }
 
 .fav-add:active svg {
-  fill: var(--dark-blue);
+  fill: var(--favorite-ad);
   width: 22px;
   height: 20px;
- }
+}
 
- .fav-add:focus {
+.fav-add:focus {
   width: 26px;
   height: 26px;
   top: 25px;
@@ -58,7 +61,7 @@
 .fav-add:hover:focus {
   fill: red;
 }
-  
+
 .fav-add:active {
   outline: none;
   top: 23px;
