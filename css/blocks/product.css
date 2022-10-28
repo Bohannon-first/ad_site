@@ -56,6 +56,7 @@
   width: calc(100% / 5);
   background-color: var(--disabled-bg);
   opacity: 0.25;
+  cursor: pointer;
 }
 
 .product__navigation-item:not(:last-of-type) {
@@ -64,11 +65,12 @@
 
 .product__navigation-item--active {
   opacity: 1;
+  background-color: var(--light-blue);
 }
 
 .product__content {
   width: 530px;
-  padding: 30px 40px;
+  padding: 30px 20px;
 }
 
 .product__title {

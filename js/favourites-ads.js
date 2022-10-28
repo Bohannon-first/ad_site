@@ -1,4 +1,4 @@
-import {listResults, arrayAds} from './available-ads.js';
+import {listResults, arrayAds, paginationPhotosBlockClickHandlerFavorite} from './available-ads.js';
 import {mySlider} from './main.js';
 import {popupFullAd, openPopupFullAddFromFavorites, openPopupFullAdd} from './popup-full-ad.js';
 
@@ -129,6 +129,7 @@ const adToFavorites = (evt) => {
 
 listResults.addEventListener('click', adToFavorites);
 favouritesAdsList.addEventListener('click', adToFavorites);
+favouritesAdsList.addEventListener('mouseover', paginationPhotosBlockClickHandlerFavorite);
 
 // Проверка добавлены ли в "Избранное" объявления
 const areThereFavoritesAds = () => {
@@ -144,5 +145,6 @@ const areThereFavoritesAds = () => {
     });
   }
 };
+
 
 export {adToFavorites, favouritesAdsList, areThereFavoritesAds};
