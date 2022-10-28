@@ -46,7 +46,7 @@ select {
 }
 
 input::-ms-clear,
-input::-ms-reveal{
+input::-ms-reveal {
   display: none;
 }
 
@@ -81,4 +81,9 @@ button,
 [type="reset"],
 [type="submit"] {
   appearance: none;
+}
+
+/* Убрать копирайт с карты */
+[class*="copyrights-pane"] {
+  display: none !important;
 }
