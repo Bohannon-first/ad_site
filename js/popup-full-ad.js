@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import {isEscEvent, isOverlayClick} from './util.js';
 import {adToFavorites, favouritesAdsList} from './favourites-ads.js';
+import {init, myMap} from './map.js';
 
 const popupFullAd = document.querySelector('.popup');
 const btnClosePopupFullAd = popupFullAd.querySelector('.popup__close');
@@ -24,6 +25,7 @@ const checkRating = (rating) => {
 
 // Закрыть попап с полным объявлением по клику на крестик
 const closePopupFullAdd = () => {
+  myMap.destroy();
   popupFullAd.style.display = 'none';
   popupFullAd.querySelector('.fav-add').classList.remove('fav-add--active');
 
@@ -234,7 +236,9 @@ const createContentForFullAdd = (ads, currentAd, popup) => {
       if (currentAd.querySelector('.fav-add--active')) {
         popup.querySelector('.fav-add').classList.add('fav-add--active');
       }
-
+      // Загрузка/создание карты
+      // eslint-disable-next-line no-undef
+      ymaps.ready(init(foundAd.coordinates));
       popup.style.display = 'block';
     }
   });
