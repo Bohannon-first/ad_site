@@ -2,11 +2,95 @@ import {getDataPublicationAd} from './util.js';
 
 const QUANTITY_ADS_SHOWN = 7;
 const listResults = document.querySelector('.results__list');
+const QUANTITY_PHOTOS_SHOWN_PAGINATION = 5;
 
 // Тут хранится массив объявлений, поступиший с сервера
 let arrayAds = null;
 // Объект с данными(объявлениями), поступивший с сервера
 let objectWithAds = null;
+
+// Создание пагинации и индикатора активной фотографии в блоке с фотографиями
+const createPaginationPhotoElements = (item) => {
+  const resultsItem = listResults.querySelectorAll('.results__item.product');
+  const paginationContainer = resultsItem[resultsItem.length - 1].querySelector('.product__image-navigation');
+  for (let i = 0; i < item.photos.length; i++) {
+    if (i > QUANTITY_PHOTOS_SHOWN_PAGINATION - 1) {
+      break;
+    }
+    const tabItemPagination = '<span class="product__navigation-item"></span>';
+    paginationContainer.insertAdjacentHTML('beforeend', tabItemPagination);
+  }
+
+  paginationContainer.firstChild.classList.add('product__navigation-item--active');
+};
+
+// Обработчик наведения на пагинацию фотографий в объявлении (для общего списка)
+const paginationPhotosBlockClickHandler = (evt) => {
+  if (evt.target.matches('.product__navigation-item')) {
+    const activeItemPagination = evt.target.closest('.product__navigation-item');
+    const itemAd = evt.target.closest('.results__item.product');
+    const navigationItems = itemAd.querySelectorAll('.product__navigation-item');
+    navigationItems.forEach((item) => {
+      item.classList.remove('product__navigation-item--active');
+    });
+    activeItemPagination.classList.add('product__navigation-item--active');
+
+    // Перелистывание фотографий при наведении на табы
+    let currentPhotosArray = null;
+    arrayAds.forEach((ad) => {
+      if (ad.name === itemAd.querySelector('.product__title a').textContent) {
+        currentPhotosArray = ad.photos;
+      }
+    });
+
+    // Поменять фотографию при наведении на таб
+    if (activeItemPagination === navigationItems[0]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[0];
+    } else if (activeItemPagination === navigationItems[1]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[1];
+    } else if (activeItemPagination === navigationItems[2]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[2];
+    } else if (activeItemPagination === navigationItems[3]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[3];
+    } else if (activeItemPagination === navigationItems[4]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[4];
+    }
+  }
+};
+
+// Обработчик наведения на пагинацию фотографий в объявлении (для списка избранное)
+const paginationPhotosBlockClickHandlerFavorite = (evt) => {
+  if (evt.target.matches('.product__navigation-item')) {
+    const activeItemPagination = evt.target.closest('.product__navigation-item');
+    const itemAd = evt.target.closest('.favourites__item.product');
+    const navigationItems = itemAd.querySelectorAll('.product__navigation-item');
+    navigationItems.forEach((item) => {
+      item.classList.remove('product__navigation-item--active');
+    });
+    activeItemPagination.classList.add('product__navigation-item--active');
+
+    // Перелистывание фотографий при наведении на табы
+    let currentPhotosArray = null;
+    arrayAds.forEach((ad) => {
+      if (ad.name === itemAd.querySelector('.product__title a').textContent) {
+        currentPhotosArray = ad.photos;
+      }
+    });
+
+    // Поменять фотографию при наведении на таб
+    if (activeItemPagination === navigationItems[0]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[0];
+    } else if (activeItemPagination === navigationItems[1]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[1];
+    } else if (activeItemPagination === navigationItems[2]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[2];
+    } else if (activeItemPagination === navigationItems[3]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[3];
+    } else if (activeItemPagination === navigationItems[4]) {
+      itemAd.querySelector('.product__image img').src = currentPhotosArray[4];
+    }
+  }
+};
 
 // Получаем доступные объявления
 const getAvailableAds = (adObject) => {
@@ -27,15 +111,9 @@ const getAvailableAds = (adObject) => {
       </button>
       <div class="product__image">
         <div class="product__image-more-photo hidden">+${element.photos.length} фото</div>
-        <img src="${element.photos[0]}" srcset="${element.photos[0]} 2x" width="318" height="220"
-          alt="">
-        <div class="product__image-navigation">
-          <span class="product__navigation-item product__navigation-item--active"></span>
-          <span class="product__navigation-item"></span>
-          <span class="product__navigation-item"></span>
-          <span class="product__navigation-item"></span>
-          <span class="product__navigation-item"></span>
-        </div>
+        <img src="${element.photos[0]}" width="318" height="220"
+          alt="${element.name}">
+        <div class="product__image-navigation"></div>
       </div>
       <div class="product__content">
         <h3 class="product__title">
@@ -49,6 +127,7 @@ const getAvailableAds = (adObject) => {
     </li>`;
 
     listResults.insertAdjacentHTML('beforeend', getAd);
+    createPaginationPhotoElements(element);
   });
 
   // Отобразить только 7 объявлений
@@ -62,4 +141,6 @@ const getAvailableAds = (adObject) => {
   }
 };
 
-export {getAvailableAds, listResults, arrayAds, objectWithAds};
+listResults.addEventListener('mouseover', paginationPhotosBlockClickHandler);
+
+export {getAvailableAds, listResults, arrayAds, objectWithAds, paginationPhotosBlockClickHandlerFavorite};
