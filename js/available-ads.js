@@ -97,7 +97,7 @@ const getAvailableAds = (adObject) => {
   arrayAds = adObject.products;
   objectWithAds = adObject;
   // console.log(objectWithAds);
-  console.log(arrayAds);
+  // console.log(arrayAds);
 
   // Создаем разметку для доступных объявлений
   adObject.products.forEach((element) => {
