@@ -236,6 +236,12 @@ const createContentForFullAdd = (ads, currentAd, popup) => {
       if (currentAd.querySelector('.fav-add--active')) {
         popup.querySelector('.fav-add').classList.add('fav-add--active');
       }
+
+      // Если осталась карта в попапе, то удалить ее
+      if (myMap) {
+        myMap.destroy();
+      }
+
       // Загрузка/создание карты
       // eslint-disable-next-line no-undef
       ymaps.ready(init(foundAd.coordinates));

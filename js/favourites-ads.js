@@ -65,11 +65,14 @@ const adToFavorites = (evt) => {
     const cloneFavoriteAd = favoriteAd.cloneNode(true);
     cloneFavoriteAd.setAttribute('class', 'favourites__item product');
     favouritesAdsList.appendChild(cloneFavoriteAd);
+    // Удаление из избранного при клике по карточке объявления
   } else if (!evt.target.closest('.fav-add--active') && evt.target.closest('.results__item.product')) {
     const favoriteAdSCollection = favouritesAdsList.querySelectorAll('.favourites__item.product');
     favoriteAdSCollection.forEach((ad) => {
-      if (evt.target.closest('.results__item.product').querySelector('.product__title a').textContent === ad.querySelector('.product__title a').textContent) {
-        ad.remove();
+      if (evt.target.closest('.fav-add')) {
+        if (evt.target.closest('.results__item.product').querySelector('.product__title a').textContent === ad.querySelector('.product__title a').textContent) {
+          ad.remove();
+        }
       }
     });
   }
@@ -85,6 +88,7 @@ const adToFavorites = (evt) => {
         favouritesAdsList.appendChild(cloneFavoriteAd);
       }
     });
+
     // Удаление из избранного при клике по попапу
   } else if (!evt.target.closest('.fav-add--active') && evt.target.closest('.popup') && evt.target.closest('.fav-add')) {
     const popup = evt.target.closest('.popup');
