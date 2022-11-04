@@ -55,7 +55,6 @@ const onPopupFullAdOverlayClick = (evt) => {
 // Функция отрисовки особенностей товара
 const createFeaturesProductList = (itemAd) => {
   productFeaturesList.innerHTML = '';
-  // console.log(itemAd.filters);
   let formattedKey = null;
 
   for (const key in itemAd.filters) {

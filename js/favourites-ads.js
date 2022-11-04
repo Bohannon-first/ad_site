@@ -1,5 +1,5 @@
 import {listResults, arrayAds, paginationPhotosBlockClickHandlerFavorite} from './available-ads.js';
-import {mySlider} from './main.js';
+import {mySlider} from './filters.js';
 import {popupFullAd, openPopupFullAddFromFavorites, openPopupFullAdd} from './popup-full-ad.js';
 
 const favouritesAdsBtn = document.querySelector('.sorting__favourites');

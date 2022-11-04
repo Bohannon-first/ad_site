@@ -99,9 +99,22 @@ const getAvailableAds = (adObject) => {
   // console.log(objectWithAds);
   // console.log(arrayAds);
 
+  // Проверяем тип объявления
+  const checkTypeAd = (ad) => {
+    if (ad.category === 'Недвижимость') {
+      return 'estate';
+    } else if (ad.category === 'Автомобиль') {
+      return 'car';
+    } else if (ad.category === 'Ноутбук') {
+      return 'laptop';
+    } else if (ad.category === 'Фотоаппарат') {
+      return 'camera';
+    }
+  };
+
   // Создаем разметку для доступных объявлений
   adObject.products.forEach((element) => {
-    const getAd = `<li class="results__item product">
+    const getAd = `<li class="results__item product" data-type="${checkTypeAd(element)}">
       <button class="product__favourite fav-add" type="button" aria-label="Добавить в избранное" title="Добавить в избранное">
         <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
@@ -129,9 +142,11 @@ const getAvailableAds = (adObject) => {
     listResults.insertAdjacentHTML('beforeend', getAd);
     createPaginationPhotoElements(element);
   });
+};
 
-  // Отобразить только 7 объявлений
-  const resultsItemCollection = document.querySelectorAll('.results__item');
+// Отобразить только 7 объявлений по умолчанию при загрузке
+const showDefaultAds = () => {
+  const resultsItemCollection = document.querySelectorAll('.results__item.product');
   let adCounter = null;
   for (let i = 0; i < resultsItemCollection.length; i++) {
     adCounter++;
@@ -143,4 +158,4 @@ const getAvailableAds = (adObject) => {
 
 listResults.addEventListener('mouseover', paginationPhotosBlockClickHandler);
 
-export {getAvailableAds, listResults, arrayAds, objectWithAds, paginationPhotosBlockClickHandlerFavorite};
+export {getAvailableAds, listResults, arrayAds, objectWithAds, paginationPhotosBlockClickHandlerFavorite, showDefaultAds};
