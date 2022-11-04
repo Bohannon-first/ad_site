@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-.filter select:disabled + svg {
+.filter select:disabled+svg {
   fill: var(--disabled-blue);
   cursor: default;
 }
@@ -75,12 +75,12 @@
 
 .filter__select-wrapper svg {
   position: absolute;
-  top:64%;
+  top: 64%;
   right: 20px;
   cursor: pointer;
 
   fill: var(--main-blue);
-  }
+}
 
 .filter__select-wrapper {
   position: relative;
@@ -89,10 +89,6 @@
 
 .filter__type legend {
   margin-bottom: 13px;
-}
-
-.filter__camera {
-  margin-bottom: 35px;
 }
 
 .filter__type {
@@ -159,7 +155,7 @@
   position: relative;
 }
 
-.filter__checkboxes-item input:focus + label {
+.filter__checkboxes-item input:focus+label {
   color: var(--light-blue);
 }
 
@@ -230,7 +226,7 @@
   transition: var(--animation);
 }
 
-.filter__checkboxes-list input:checked + label::before {
+.filter__checkboxes-list input:checked+label::before {
 
   background-color: var(--dark-blue);
 
@@ -239,16 +235,16 @@
   border-color: var(--dark-blue);
 }
 
-.filter__checkboxes-list input:checked + label::after {
+.filter__checkboxes-list input:checked+label::after {
   display: block;
 }
 
-.filter__checkboxes-list input:checked:hover + label:before {
+.filter__checkboxes-list input:checked:hover+label:before {
   background-color: var(--light-blue);
   border-color: var(--light-blue);
 }
 
-.filter__checkboxes-list input:checked:hover + label {
+.filter__checkboxes-list input:checked:hover+label {
   color: var(--light-blue);
 }
 
@@ -270,14 +266,14 @@
 
   appearance: none;
   transition: var(--animation);
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    display: none;
-    -webkit-appearance: none;
-    margin: 0;
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .filter__min-square input:focus::placeholder {
@@ -346,24 +342,24 @@ input::-webkit-inner-spin-button {
   margin-bottom: 35px;
 }
 
-.filter__radiobuttons input:checked + label {
+.filter__radiobuttons input:checked+label {
   color: #ffffff;
   background-color: var(--main-blue);
   border-color: var(--main-blue);
 }
 
 
-.filter__radiobuttons input:active:disabled + label {
+.filter__radiobuttons input:active:disabled+label {
   background-color: var(--main-bg);
 }
 
-.filter__radiobuttons input:disabled + label {
+.filter__radiobuttons input:disabled+label {
   background-color: var(--main-bg);
   color: var(--disabled-blue);
   cursor: default;
-  }
+}
 
-.filter__radiobuttons input:disabled + label:hover {
+.filter__radiobuttons input:disabled+label:hover {
   border-color: var(--disabled-bg);
 }
 
@@ -384,44 +380,44 @@ input::-webkit-inner-spin-button {
 
 
 
-.filter__checkboxes-item input:disabled + label {
+.filter__checkboxes-item input:disabled+label {
   color: var(--disabled-blue);
   cursor: default;
 }
 
-.filter__checkboxes-item input:disabled + label::before {
+.filter__checkboxes-item input:disabled+label::before {
   background-color: var(--disabled-bg);
   cursor: default;
 }
 
-.filter__checkboxes-item input:disabled + label:hover::before {
+.filter__checkboxes-item input:disabled+label:hover::before {
   border-color: var(--disabled-bg);
 }
 
 
-.filter__checkboxes-item input:checked:disabled + label::before {
+.filter__checkboxes-item input:checked:disabled+label::before {
   background-image: url("../../img/icon-tick_disabled.svg");
   background-color: var(--disabled-bg);
   border-color: var(--disabled-bg);
   cursor: default;
 }
 
-.filter__checkboxes-item input:checked:disabled + label {
+.filter__checkboxes-item input:checked:disabled+label {
   color: var(--disabled-blue);
   cursor: default;
 }
 
 
-.filter__checkboxes-item input:focus:checked + label::before {
+.filter__checkboxes-item input:focus:checked+label::before {
   border-color: var(--dark-blue);
 }
 
 
-.filter__checkboxes-item input:focus + label::before {
+.filter__checkboxes-item input:focus+label::before {
   border-color: var(--light-blue);
 }
 
-.filter__checkboxes-item input:checked:focus + label:hover::before {
+.filter__checkboxes-item input:checked:focus+label:hover::before {
   border-color: var(--light-blue);
 }
 
@@ -440,12 +436,12 @@ input::-webkit-inner-spin-button {
   border-color: var(--dark-blue);
 }
 
-.filter__radiobuttons input:disabled:checked + label {
+.filter__radiobuttons input:disabled:checked+label {
   background-color: var(--disabled-bg);
   border-color: var(--disabled-bg);
 }
 
-.filter__radiobuttons input:focus:not(:checked) + label {
+.filter__radiobuttons input:focus:not(:checked)+label {
   background-color: var(--light-blue);
   border-color: var(--light-blue);
   color: #ffffff;
@@ -453,7 +449,7 @@ input::-webkit-inner-spin-button {
 
 
 .filter__type--car-body {
-margin-bottom: 22px;
+  margin-bottom: 22px;
 }
 
 .filter__ram-list {
@@ -464,22 +460,22 @@ margin-bottom: 22px;
   list-style: none;
 }
 
-.filter__checkboxes-item input:focus:checked + label {
+.filter__checkboxes-item input:focus:checked+label {
   color: var(--main-blue)
 }
 
 
-.filter__checkboxes-item input:focus:not(:checked) + label::before {
-  border-color:#E1E3EC;
+.filter__checkboxes-item input:focus:not(:checked)+label::before {
+  border-color: #E1E3EC;
 }
 
-.filter__checkboxes-list input:checked + label:hover {
+.filter__checkboxes-list input:checked+label:hover {
   color: var(--light-blue);
 }
 
 
-.filter__checkboxes-item input:not(:checked):focus + label:focus {
- color: var(--light-blue);
+.filter__checkboxes-item input:not(:checked):focus+label:focus {
+  color: var(--light-blue);
 }
 
 .filter__radiobuttons-item {
@@ -493,6 +489,24 @@ margin-bottom: 22px;
 
 .filter__range label {
   margin-left: -16px;
+}
+
+/* По умолчанию фильтры всех категорий скрыты */
+.filter__estate {
+  display: none;
+}
+
+.filter__camera {
+  margin-bottom: 35px;
+  display: none;
+}
+
+.filter__laptop {
+  display: none;
+}
+
+.filter__car {
+  display: none;
 }
 
 /*.filter__category-filters {*/

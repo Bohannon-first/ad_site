@@ -55,7 +55,6 @@ const onPopupFullAdOverlayClick = (evt) => {
 // Функция отрисовки особенностей товара
 const createFeaturesProductList = (itemAd) => {
   productFeaturesList.innerHTML = '';
-  // console.log(itemAd.filters);
   let formattedKey = null;
 
   for (const key in itemAd.filters) {
@@ -236,6 +235,12 @@ const createContentForFullAdd = (ads, currentAd, popup) => {
       if (currentAd.querySelector('.fav-add--active')) {
         popup.querySelector('.fav-add').classList.add('fav-add--active');
       }
+
+      // Если осталась карта в попапе, то удалить ее
+      if (myMap) {
+        myMap.destroy();
+      }
+
       // Загрузка/создание карты
       // eslint-disable-next-line no-undef
       ymaps.ready(init(foundAd.coordinates));
