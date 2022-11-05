@@ -53,3 +53,14 @@
   width: 0;
   height: 0;
 }
+
+/* Удаление объявления из "Избранного" */
+@keyframes removeFavoriteAd {
+  0% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}

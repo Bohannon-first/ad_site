@@ -8,6 +8,7 @@
   right: 0;
 
   background-color: var(--popup-overlay);
+  animation: showPopup 0.5s ease 0s 1 normal forwards;
 }
 
 .popup--active {
@@ -172,4 +173,28 @@
   padding-top: 60px;
   overflow: auto;
   background-color: var(--popup-overlay);
+}
+
+/* Анимация появления попапа (полного объявления) */
+@keyframes showPopup {
+  0% {
+    transform: scale(2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Анимация закрытия попапа (полного объявления) */
+@keyframes closePopup {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
 }

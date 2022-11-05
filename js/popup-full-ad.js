@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import {isEscEvent, isOverlayClick} from './util.js';
-import {adToFavorites, favouritesAdsList} from './favourites-ads.js';
+import {adToFavorites, favouritesAdsList, DURATION_ANIMATION_DELETION_AD} from './favourites-ads.js';
 import {init, myMap} from './map.js';
 
 const popupFullAd = document.querySelector('.popup');
@@ -25,9 +25,13 @@ const checkRating = (rating) => {
 
 // Закрыть попап с полным объявлением по клику на крестик
 const closePopupFullAdd = () => {
-  myMap.destroy();
-  popupFullAd.style.display = 'none';
-  popupFullAd.querySelector('.fav-add').classList.remove('fav-add--active');
+  popupFullAd.style.animation = 'closePopup 0.5s ease 0s 1 normal forwards';
+  setTimeout(() => {
+    myMap.destroy();
+    popupFullAd.style.display = 'none';
+    popupFullAd.querySelector('.fav-add').classList.remove('fav-add--active');
+    popupFullAd.style.animation = '';
+  }, DURATION_ANIMATION_DELETION_AD);
 
   // Удаление обработчиков
   btnClosePopupFullAd.removeEventListener('click', closePopupFullAdd);

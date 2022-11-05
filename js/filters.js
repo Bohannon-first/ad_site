@@ -1,4 +1,4 @@
-import {arrayAds, showDefaultAds} from './available-ads.js';
+import {arrayAds} from './available-ads.js';
 
 const choosingProductCategory = document.querySelector('#categories');
 const productCategories = document.querySelectorAll('#categories option');
@@ -8,6 +8,18 @@ const filterLaptop = document.querySelector('.filter__laptop');
 const filterCar = document.querySelector('.filter__car');
 const myFilters = document.querySelectorAll('.filter__item');
 let mySlider = null;
+
+
+// eslint-disable-next-line no-undef
+const defaultSlider = new rSlider({
+  target: '#sampleSlider',
+  values: {min: 9000, max: 30000000},
+  range: true,
+  tooltip: true,
+  scale: true,
+  labels: false,
+  step: 100000
+});
 
 // Шаг слайдера
 const SLIDER_STEP_PRODUCT = {
@@ -111,6 +123,13 @@ const setPriceRangeFilter = (ads, optionChoice) => {
   const minPriceProductCategory = arrayPrices[0];
   const maxPriceProductCategory = arrayPrices[arrayPrices.length - 1];
 
+  // Удалить слайдер при переключении категорий товара
+  if (defaultSlider) {
+    defaultSlider.destroy();
+  } if (mySlider) {
+    mySlider.destroy();
+  }
+
   // eslint-disable-next-line no-undef
   mySlider = new rSlider({
     target: '#sampleSlider',
@@ -171,9 +190,6 @@ const filterAdsType = (optionChoice) => {
 
 // Обработчик клика при выборе категории товара
 const choosingProductCategoryClickHandler = () => {
-  if (mySlider) {
-    mySlider.destroy();
-  }
   productCategories.forEach((option) => {
     if (option.textContent === 'Все' && option.selected) {
       showSelectedFilter(myFilters, option);
@@ -202,7 +218,6 @@ const choosingProductCategoryClickHandler = () => {
 // Запуск через сеттаймаут, чтобы успел сформироваться массив с объявлениями(arrayAds)
 setTimeout(() => {
   choosingProductCategoryClickHandler();
-  showDefaultAds();
 }, 1000);
 
 choosingProductCategory.addEventListener('change', choosingProductCategoryClickHandler);
