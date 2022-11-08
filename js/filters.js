@@ -1,4 +1,4 @@
-import {arrayAds} from './available-ads.js';
+import {arrayAds, listResults} from './available-ads.js';
 
 const choosingProductCategory = document.querySelector('#categories');
 const productCategories = document.querySelectorAll('#categories option');
@@ -7,8 +7,9 @@ const filterCamera = document.querySelector('.filter__camera');
 const filterLaptop = document.querySelector('.filter__laptop');
 const filterCar = document.querySelector('.filter__car');
 const myFilters = document.querySelectorAll('.filter__item');
+const filterButton = document.querySelector('.button.filter__button');
+const hiddenInputSlider = document.querySelector('#sampleSlider');
 let mySlider = null;
-
 
 // eslint-disable-next-line no-undef
 const defaultSlider = new rSlider({
@@ -218,8 +219,66 @@ const choosingProductCategoryClickHandler = () => {
 // Запуск через сеттаймаут, чтобы успел сформироваться массив с объявлениями(arrayAds)
 setTimeout(() => {
   choosingProductCategoryClickHandler();
-}, 1000);
+}, 1200);
 
 choosingProductCategory.addEventListener('change', choosingProductCategoryClickHandler);
 
-export {mySlider};
+const filterButtonClickHandler = (evt) => {
+  evt.preventDefault();
+  const currentValue = mySlider.getValue();
+  let minPriceDefault = '';
+  let maxPriceDefault = '';
+
+  // Записываю минимальную цену слайдера
+  for (let i = 0; i < currentValue.length; i++) {
+    if (currentValue[i] === ',') {
+      break;
+    } else {
+      minPriceDefault += currentValue[i];
+    }
+  }
+
+  // Записываю максимальную цену слайдера
+  for (let i = currentValue.length - 1; i > 0; i--) {
+    if (currentValue[i] === ',') {
+      break;
+    } else {
+      maxPriceDefault += currentValue[i];
+    }
+  }
+
+  // Делаю из строки число
+  const minPriceFormatted = Number(minPriceDefault);
+  // Разбиваю строку на массив, переворачиваю массив в обратном порядке, объединяю массив в строку
+  const maxPriceFormatted = Number(maxPriceDefault.split('').reverse().join(''));
+
+  // Создание коллекции из выбранных товаров
+  let adsCollectionSelectedCategory = null;
+  productCategories.forEach((option) => {
+    if (option.textContent === 'Все' && option.selected) {
+      adsCollectionSelectedCategory = listResults.querySelectorAll('.results__item.product');
+    } else if (option.textContent === 'Недвижимость' && option.selected) {
+      adsCollectionSelectedCategory = listResults.querySelectorAll('[data-type=estate]');
+    } else if (option.textContent === 'Ноутбуки' && option.selected) {
+      adsCollectionSelectedCategory = listResults.querySelectorAll('[data-type=laptop]');
+    } else if (option.textContent === 'Фотоаппараты' && option.selected) {
+      adsCollectionSelectedCategory = listResults.querySelectorAll('[data-type=camera]');
+    } else if (option.textContent === 'Автомобили' && option.selected) {
+      adsCollectionSelectedCategory = listResults.querySelectorAll('[data-type=car]');
+    }
+  });
+
+  // Проверка находятся ли объявления в выбранном диапазоне цен
+  adsCollectionSelectedCategory.forEach((ad) => {
+    const productPrice = Number(ad.querySelector('.product__price').textContent.replace(/[₽\s]/g, '').trim());
+    if (productPrice >= minPriceFormatted && productPrice <= maxPriceFormatted ) {
+      ad.style.display = 'flex';
+    } else {
+      ad.style.display = 'none';
+    }
+  });
+};
+
+filterButton.addEventListener('click', filterButtonClickHandler);
+
+export {mySlider, productCategories};
