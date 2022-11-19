@@ -7,6 +7,7 @@ const favouritesAdsContainer = document.querySelector('.results__info.favourites
 const filterFieldset = document.querySelector('.filter__fieldset');
 const sortingFieldset = document.querySelector('.sorting__order');
 const favouritesAdsList = favouritesAdsContainer.querySelector('.favourites__list');
+const DURATION_ANIMATION_DELETION_AD = 500;
 
 // Обработчик клика на кнопку "Показать избранные"
 const favouritesAdsBtnClickHandler = (evt) => {
@@ -30,9 +31,26 @@ const favouritesAdsBtnClickHandler = (evt) => {
 
   // Открываем попап объявления из избранного
   openPopupFullAddFromFavorites(arrayAds);
+
+  // Проверка, есть ли описательный текст внутри блока с результатами
+  if (!document.querySelector('.results__info.results__description').classList.contains('hidden')) {
+    document.querySelector('.results__info.results__description').classList.add('hidden');
+  }
 };
 
 favouritesAdsBtn.addEventListener('click', favouritesAdsBtnClickHandler);
+
+// Проверка есть ли в избранном объявление
+// Если есть, то скрыть описательный текст внутри избранного
+const showDescriptiveTextFavorite = () => {
+  if (favouritesAdsList.children.length > 0) {
+    document.querySelector('.favourites__empty-message').classList.add('hidden');
+    document.querySelector('.favourites__notion').classList.add('hidden');
+  } else {
+    document.querySelector('.favourites__empty-message').classList.remove('hidden');
+    document.querySelector('.favourites__notion').classList.remove('hidden');
+  }
+};
 
 // Добавить объявление в избранное
 const adToFavorites = (evt) => {
@@ -72,6 +90,7 @@ const adToFavorites = (evt) => {
       if (evt.target.closest('.fav-add')) {
         if (evt.target.closest('.results__item.product').querySelector('.product__title a').textContent === ad.querySelector('.product__title a').textContent) {
           ad.remove();
+          showDescriptiveTextFavorite();
         }
       }
     });
@@ -95,30 +114,30 @@ const adToFavorites = (evt) => {
     const favoriteAdSCollection = favouritesAdsList.querySelectorAll('.favourites__item.product');
     favoriteAdSCollection.forEach((favoriteAd) => {
       if (favoriteAd.querySelector('.product__title a').textContent === popup.querySelector('.popup__title').textContent) {
-        favoriteAd.remove();
+        favoriteAd.style.animation = 'removeFavoriteAd 0.5s ease 0s 1 normal forwards';
+        setTimeout(() => {
+          favoriteAd.remove();
+          showDescriptiveTextFavorite();
+        }, DURATION_ANIMATION_DELETION_AD);
       }
     });
   }
 
   // Удаление объявлений из избранного
   if (evt.target.closest('.favourites__list') && evt.target.closest('.fav-add') && !evt.target.closest('.fav-add--active')) {
-    evt.target.closest('.favourites__item.product').remove();
+    // Анимация удаления
+    evt.target.closest('.favourites__item.product').style.animation = 'removeFavoriteAd 0.5s ease 0s 1 normal forwards';
+    setTimeout(() => {
+      evt.target.closest('.favourites__item.product').remove();
+      showDescriptiveTextFavorite();
+    }, DURATION_ANIMATION_DELETION_AD);
     ads.forEach((ad) => {
       if (ad.querySelector('.product__title a').textContent === evt.target.closest('.favourites__item.product').querySelector('.product__title a').textContent) {
         ad.querySelector('.product__favourite.fav-add').classList.remove('fav-add--active');
       }
     });
   }
-
-  // Проверка есть ли в избранном объявление
-  // Если есть, то скрыть описательный текст внутри избранного
-  if (favouritesAdsList.children.length > 0) {
-    document.querySelector('.favourites__empty-message').classList.add('hidden');
-    document.querySelector('.favourites__notion').classList.add('hidden');
-  } else {
-    document.querySelector('.favourites__empty-message').classList.remove('hidden');
-    document.querySelector('.favourites__notion').classList.remove('hidden');
-  }
+  showDescriptiveTextFavorite();
 
   // Изменение значения атрибута title кнопки "Добавить в избранное"
   const addToFavoritesButtons = document.querySelectorAll('.fav-add');
@@ -150,5 +169,4 @@ const areThereFavoritesAds = () => {
   }
 };
 
-
-export {adToFavorites, favouritesAdsList, areThereFavoritesAds};
+export {adToFavorites, favouritesAdsList, areThereFavoritesAds, DURATION_ANIMATION_DELETION_AD};

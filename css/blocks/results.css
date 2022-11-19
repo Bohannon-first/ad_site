@@ -35,7 +35,6 @@
 }
 
 .results__info {
-  /* margin-top: 30px; */
   position: relative;
 }
 
@@ -44,4 +43,30 @@
   color: var(--white);
   background-color: var(--main-blue);
   border-color: var(--main-blue);
+}
+
+.results__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.results__description p {
+  width: 58%;
+  margin: 0;
+  margin-bottom: 20px;
+  color: var(--disabled-blue);
+  text-align: center;
+}
+
+.results__empty-message {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.results__notion {
+  font-weight: 400;
+  line-height: 1.57;
 }

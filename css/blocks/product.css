@@ -44,7 +44,7 @@
 
 .product__image-navigation {
   position: absolute;
-  bottom: 5px;
+  bottom: 15px;
   width: 100%;
   display: flex;
   padding: 0 5px;
@@ -52,10 +52,10 @@
 
 .product__navigation-item {
   display: block;
-  height: 4px;
-  width: calc(100% / 5);
+  height: 10px;
+  width: 100%;
   background-color: var(--disabled-bg);
-  opacity: 0.25;
+  opacity: 0.50;
   cursor: pointer;
 }
 
@@ -65,7 +65,7 @@
 
 .product__navigation-item--active {
   opacity: 1;
-  background-color: var(--light-blue);
+  background-color: var(--active-bg);
 }
 
 .product__content {

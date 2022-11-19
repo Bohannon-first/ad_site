@@ -8,12 +8,11 @@
   --main-bg: #f5f6f9;
   --white: #ffffff;
   --popup-overlay: rgba(0, 0, 0, 0.8);
+  --active-bg: rgba(0, 0, 0, 0.6);
   --light-green: #44B156;
   --dark-yellow: #9cc72a;
   --bad-rating: #97A2B5;
   --favorite-ad: #dd1f1f;
-
   --main-font: "Montserrat", "Helvetica", sans-serif;
-
   --animation: 0.155s ease-in-out;
 }

@@ -6,8 +6,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-
   background-color: var(--popup-overlay);
+  animation: showPopup 0.5s ease 0s 1 normal forwards;
 }
 
 .popup--active {
@@ -31,13 +31,10 @@
   position: absolute;
   top: 33px;
   right: 35px;
-
   padding: 0;
   border: none;
   background: none;
-
   cursor: pointer;
-
 }
 
 .popup__close svg {
@@ -58,10 +55,8 @@
   outline: none;
 }
 
-
 .popup__date {
   margin-bottom: 6px;
-
   font-size: 14px;
   line-height: 1.57;
   color: var(--disabled-blue);
@@ -172,4 +167,28 @@
   padding-top: 60px;
   overflow: auto;
   background-color: var(--popup-overlay);
+}
+
+/* Анимация появления попапа (полного объявления) */
+@keyframes showPopup {
+  0% {
+    transform: scale(2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Анимация закрытия попапа (полного объявления) */
+@keyframes closePopup {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
 }
