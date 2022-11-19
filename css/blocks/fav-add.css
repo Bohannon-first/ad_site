@@ -28,7 +28,6 @@
   left: 26px;
 }
 
-
 .fav-add svg {
   display: block;
   transition: var(--animation);
@@ -38,10 +37,6 @@
   fill: var(--favorite-ad);
   width: 26px;
   height: 24px;
-}
-
-.fav-add:focus svg {
-  /* fill: var(--light-blue); */
 }
 
 .fav-add:active svg {

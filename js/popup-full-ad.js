@@ -143,36 +143,36 @@ const createFeaturesProductList = (itemAd) => {
       // Недвижимость
       // Меняем текст с английского на русский в элементах .chars__value
     } else if (value.textContent === 'flat') {
-      value.textContent = 'квартира';
+      value.textContent = 'Квартира';
     } else if (value.textContent === 'apartment') {
-      value.textContent = 'апартаменты';
+      value.textContent = 'Апартаменты';
     } else if (value.textContent === 'house') {
-      value.textContent = 'дом';
+      value.textContent = 'Дом';
       // Автомобили
     } else if (value.textContent === 'sedan') {
-      value.textContent = 'седан';
+      value.textContent = 'Седан';
     } else if (value.textContent === 'universal') {
-      value.textContent = 'универсал';
+      value.textContent = 'Универсал';
     } else if (value.textContent === 'hatchback') {
-      value.textContent = 'хэтчбек';
+      value.textContent = 'Хэтчбек';
     } else if (value.textContent === 'suv') {
-      value.textContent = 'внедорожник';
+      value.textContent = 'Внедорожник';
     } else if (value.textContent === 'auto') {
-      value.textContent = 'автоматическая';
+      value.textContent = 'Автоматическая';
     } else if (value.textContent === 'mechanic') {
-      value.textContent = 'механическая';
+      value.textContent = 'Механическая';
       // Ноутбуки
     } else if (value.textContent === 'home') {
-      value.textContent = 'для дома';
+      value.textContent = 'Домашний';
     } else if (value.textContent === 'ultrabook') {
-      value.textContent = 'ультрабук';
+      value.textContent = 'Ультрабук';
       // Фотоаппараты
     } else if (value.textContent === 'full-hd') {
       value.textContent = 'Full HD';
     } else if (value.textContent === 'slr') {
-      value.textContent = 'зеркальная';
+      value.textContent = 'Зеркальная';
     } else if (value.textContent === 'digital') {
-      value.textContent = 'цифровая';
+      value.textContent = 'Цифровая';
     }
   });
 

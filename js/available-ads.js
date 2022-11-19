@@ -1,6 +1,5 @@
 import {getDataPublicationAd} from './util.js';
 
-// const QUANTITY_ADS_SHOWN = 7;
 const listResults = document.querySelector('.results__list');
 const QUANTITY_PHOTOS_SHOWN_PAGINATION = 5;
 
@@ -96,8 +95,6 @@ const paginationPhotosBlockClickHandlerFavorite = (evt) => {
 const getAvailableAds = (adObject) => {
   arrayAds = adObject.products;
   objectWithAds = adObject;
-  // console.log(objectWithAds);
-  // console.log(arrayAds);
 
   // Проверяем тип объявления
   const checkTypeAd = (ad) => {
@@ -142,18 +139,6 @@ const getAvailableAds = (adObject) => {
     createPaginationPhotoElements(element);
   });
 };
-
-// Отобразить только 7 объявлений по умолчанию при загрузке
-// const showDefaultAds = () => {
-//   const resultsItemCollection = document.querySelectorAll('.results__item.product');
-//   let adCounter = null;
-//   for (let i = 0; i < resultsItemCollection.length; i++) {
-//     adCounter++;
-//     if (adCounter > QUANTITY_ADS_SHOWN) {
-//       resultsItemCollection[i].style.display = 'none';
-//     }
-//   }
-// };
 
 listResults.addEventListener('mouseover', paginationPhotosBlockClickHandler);
 
