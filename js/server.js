@@ -3,7 +3,7 @@ import {openPopupFullAdd} from './popup-full-ad.js';
 
 const getData = (onSuccess) => {
 
-  fetch('https://main-shop-fake-server.herokuapp.com/db')
+  fetch('https://mock.pages.academy/store/db')
     .then((response) => {
       if (response.ok) {
         return response.json();
